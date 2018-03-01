@@ -5,14 +5,18 @@ import java.util.*;
 import javax.inject.*;
 import play.libs.Json;
 import play.data.Form;
-import play.data.FormFactory;
+import play.Configuration;
+import javax.inject.Inject;
 import play.mvc.BodyParser;
+import play.data.FormFactory;
 import play.data.validation.ValidationError;
 
 import models.*;
 import views.html.*;
 
 public class BankController extends Controller {
+
+  @Inject Configuration configuration;
 
   @Inject FormFactory formFactory;
 
@@ -27,6 +31,7 @@ public class BankController extends Controller {
   }
 
   public Result deposit() {
+    configBankNotes();
     Integer[] notes = bankNote.getBankNote();
 
     Arrays.sort(notes, Collections.reverseOrder());
@@ -60,6 +65,7 @@ public class BankController extends Controller {
   }
 
   public Result withdraw() {
+    configBankNotes();
     Integer[] notes = bankNote.getBankNote();
 
     Arrays.sort(notes, Collections.reverseOrder());
@@ -76,7 +82,6 @@ public class BankController extends Controller {
       for(ValidationError err: amountForm.errors("amount")) {
         errors.add(err.message());
       }
-      System.out.println(errors);
       return badRequest(menu.render(titleMessage, new ArrayList<String>(), errors, bankNote.getBalance()));
 
     } else {
@@ -119,6 +124,12 @@ public class BankController extends Controller {
       }
     }
     return mappingNotes;
+  }
+
+  public void configBankNotes() {
+    List<Integer> configNotes = this.configuration.getIntList("bank.notes");
+
+    bankNote.setBankNote(configNotes.toArray(new Integer[configNotes.size()]));
   }
 
 }

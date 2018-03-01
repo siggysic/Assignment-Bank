@@ -7,6 +7,10 @@ public class BankNote {
   protected Integer[] bankNote = {20, 50};
   protected Map<String, Long> balanceBankNote = new HashMap<String, Long>();
 
+  public void setBankNote(Integer[] bankNote) {
+    this.bankNote = bankNote;
+  }
+
   public Integer[] getBankNote() {
     return bankNote;
   }

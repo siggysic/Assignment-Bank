@@ -1,53 +1,29 @@
-[<img src="https://img.shields.io/travis/playframework/play-java-starter-example.svg"/>](https://travis-ci.org/playframework/play-java-starter-example)
+# Siggy's bank Asssignment
 
-# play-java-starter-example
+## Version
+- sbt version ```1.1.0```
+- java version ```1.8```
 
-This is a starter application that shows how Play works.  Please see the documentation at https://www.playframework.com/documentation/latest/Home for more details.
+## Feauture
+- Deposit
+- Withdraw
+- Show balance
 
-## Running
+---
 
-Run this using [sbt](http://www.scala-sbt.org/).  If you downloaded this project from http://www.playframework.com/download then you'll find a prepackaged version of sbt in the project directory:
+## Configuration
+***support when it have to change currencies, country, bank notes***
 
-```
-sbt run
-```
+Can configuration bank notes at ```application.conf```
+and input bank note in ```bank.notes``` variable
+example : ```bank.notes = [20, 50, 70]```
 
-And then go to http://localhost:9000 to see the running web application.
+---
 
-## Controllers
-
-There are several demonstration files available in this template.
-
-- HomeController.java:
-
-  Shows how to handle simple HTTP requests.
-
-- AsyncController.java:
-
-  Shows how to do asynchronous programming when handling a request.
-
-- CountController.java:
-
-  Shows how to inject a component into a controller and use the component when
-  handling requests.
-
-## Components
-
-- Module.java:
-
-  Shows how to use Guice to bind all the components needed by your application.
-
-- Counter.java:
-
-  An example of a component that contains state, in this case a simple counter.
-
-- ApplicationTimer.java:
-
-  An example of a component that starts when the application starts and stops
-  when the application stops.
-
-## Filters
-
-- ExampleFilter.java
-
-  A simple filter that adds a header to every response.
+## Hot to run this project
+- first step : Download build tool for this project using ```sbt```
+and this [sbt](https://www.scala-sbt.org/download.html) bring you to download sbt (support all platform)
+- second step : Clone this project to your repository and checkout to ```master``` branch
+- third step : Go to command line or terminal and change directory to ```Siggy-Bank```
+and type ```sbt run``` ***(maybe first time it take long time)***
+- forth step : When it application started then go to browser and type ```localhost:9000```
