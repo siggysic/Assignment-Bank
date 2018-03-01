@@ -28,3 +28,20 @@ and this [sbt](https://www.scala-sbt.org/download.html) bring you to download sb
 and type ```sbt run``` ***(maybe first time it take long time)***
 - if unknown command sbt please exit your cmd or terminal and go to third step again
 - forth step : When it application started then go to browser and type ```localhost:9000```
+
+## The supposition
+```bank.notes = [20, 50]```
+- If you deposit 140 this project assume it two 50 bank note and two 20 bank note
+- If you withdraw 140 this project assume it two 50 bank note and two 20 bank note
+- If you input 130 it should be error
+
+```bank.notes = [20, 50, 100, 500, 1000]```
+- If you deposit 90 this project assume it one 70 bank note and one 20 bank note
+- If you deposit 90 this project assume it one 70 bank note and one 20 bank note
+- If you input 130 it should be error
+
+for now it's not support the best way to deposit or withdraw note bank
+
+example
+```bank.notes = [20, 50, 51]```
+- If you input 100 it should be error because it focus on largest bank note first
