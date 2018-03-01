@@ -9,5 +9,19 @@ GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code
 GET     /message                    controllers.AsyncController.message
 
+GET     /bank/menu                  controllers.BankController.menu
+
++ nocsrf
+POST    /bank/deposit               controllers.BankController.deposit
+
++ nocsrf
+POST    /bank/withdraw               controllers.BankController.withdraw
+
++ nocsrf
+POST    /bank/confirm/deposit       controllers.BankController.confirmDeposit
+
++ nocsrf
+POST    /bank/confirm/withdraw       controllers.BankController.confirmWithdraw
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

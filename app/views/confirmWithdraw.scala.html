@@ -1,0 +1,26 @@
+@(message: String, amount: Long, mapBankNote: Map[String, Long])
+
+@main(message) {
+
+<section class="hero is-info is-large">
+
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        @message
+      </p>
+      <p class="subtitle">
+        Amount : @amount
+      </p>
+
+        @mapBankNote.map { bankNote =>
+          <p>Bank notes : @bankNote._1 -> Amount of bank notes : @bankNote._2</p>
+        }
+      @helper.form(action = routes.BankController.confirmWithdraw) {
+        <input type="submit" class="button is-primary is-inverted is-outlined" value="Confirm order" name="confirm">
+      }
+    </div>
+  </div>
+</section>
+
+}

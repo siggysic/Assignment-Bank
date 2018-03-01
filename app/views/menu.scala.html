@@ -1,0 +1,96 @@
+@(message: String, errors: List[String], errorsWithdraw: List[String], balance: Long)
+
+@main(message) {
+
+  <section class="hero is-info is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Siggy's Bank
+        </h1>
+        <h2 class="subtitle">
+          first bank to support deposit, withdraw, check balanace and transactions
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Balance : @balance
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-success is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-gapless">
+          <div class="column is-one-third is-left">
+            <h1 class="title">
+              Deposit
+            </h1>
+            <h2 class="subtitle">
+              Deposit your money ..
+            </h2>
+          </div>
+          <div class="column">
+            @helper.form(action = routes.BankController.deposit) {
+              <div class="field is-grouped">
+                <div class="control is-expanded">
+                  <input class="input" type="text" placeholder="Amount" name="amount">
+                </div>
+                <div class="control">
+                  <input class="button is-white is-outlined" type="submit" name="deposit" value="Deposit">
+                </div>
+              </div>
+              <div class="field">
+                @errors.map { err =>
+                  <p class="help is-danger">@Messages(err)</p>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-danger is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-gapless">
+          <div class="column is-one-third is-left">
+            <h1 class="title">
+              Withdraw
+            </h1>
+            <h2 class="subtitle">
+              Withdraw your money ..
+            </h2>
+          </div>
+          <div class="column">
+            @helper.form(action = routes.BankController.withdraw) {
+            <div class="field is-grouped">
+              <div class="control is-expanded">
+                <input class="input" type="text" placeholder="Amount" name="amount">
+              </div>
+              <div class="control">
+                <input class="button is-white is-outlined" type="submit" name="withdraw" value="Withdraw">
+              </div>
+            </div>
+            <div class="field">
+              @errorsWithdraw.map { err =>
+                <p class="help">@Messages(err)</p>
+              }
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+}
